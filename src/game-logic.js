@@ -17,3 +17,8 @@ export function reorderRandomly(array){
 const getRandomNumber = (limit)=>{
     return Math.floor(Math.random()*limit)
 }
+
+
+export function displayGameWon(){
+    console.log("YOU Won")
+}

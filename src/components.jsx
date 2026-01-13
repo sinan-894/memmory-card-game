@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { reorderRandomly } from './game-logic'
+import { reorderRandomly,displayGameWon } from './game-logic'
 
 
 export function ScoreBoard({score,bestScore}){
@@ -36,7 +36,10 @@ export function MemmoryCards({cardsObject, setScore}){
     }
 
     const isGameOver  = (card)=>{
-        return memmory.includes(card)
+        console.log(memmory.length)
+        if (memmory.length<cards.length-1) return memmory.includes(card)
+        else if(!memmory.includes(card)) displayGameWon()
+        return 1;
     }
     return(
         <>
