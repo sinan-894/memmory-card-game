@@ -16,7 +16,7 @@ export function ScoreBoard({score,bestScore}){
 
 
 
-export function MemmoryCards({cardsObject,score, onScore}){
+export function MemmoryCards({cardsObject, setScore}){
     const cards = Object.keys(cardsObject)
     const [orderOfCards,setOrderOfCards] = useState([...cards])
     const [memmory,setMemmory] = useState([])
@@ -24,11 +24,11 @@ export function MemmoryCards({cardsObject,score, onScore}){
         const newArray = reorderRandomly(cards)
         console.log(memmory)
         if(isGameOver(e.target.id)){
-            onScore(0)
+            setScore(0)
             setMemmory([])
         }
         else{
-            onScore(score+1)
+            setScore(1)
             setMemmory([...memmory,e.target.id])
         }
         setOrderOfCards([...newArray])
