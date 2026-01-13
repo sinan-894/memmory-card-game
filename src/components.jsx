@@ -15,9 +15,11 @@ export function ScoreBoard({score,bestScore}){
 
 
 
-export function MemmoryCards({cards}){
+export function MemmoryCards({cardsObject}){
+    const cards = Object.keys(cardsObject)
     const [orderOfCards,setOrderOfCards] = useState([...cards])
-    const handleClick = ()=>{
+    const handleClick = (e)=>{
+        console.log(e)
         const newArray = reorderRandomly(cards)
         setOrderOfCards([...newArray])
     }
@@ -25,7 +27,7 @@ export function MemmoryCards({cards}){
         <>
         <div className='cards-main'>
             {orderOfCards.map(card=>{
-                return <img src={card} alt="" onClick={handleClick} />
+                return <img src={cardsObject[card]} alt="" onClick={handleClick} />
             })}
         </div>
         </>
