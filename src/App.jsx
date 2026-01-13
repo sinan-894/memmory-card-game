@@ -5,7 +5,13 @@ import { getImageUrls } from './api'
 
 function App() {
   const [score,setScore] = useState(0)
-  let bestScore = 0
+  const [bestScore,setBestScore] = useState(0)
+  
+  const updateScore = (newScore)=>{
+    setScore(newScore)
+    if(newScore>bestScore) setBestScore(newScore)
+  }
+
   const imageUrls ={ 
     'brook':'src/images/brook.jpeg',
     'chopper':'src/images/chopper.jpeg',
@@ -20,7 +26,7 @@ function App() {
   return (
     <>
       <ScoreBoard score={score} bestScore={bestScore}></ScoreBoard>
-      <MemmoryCards cardsObject={imageUrls} score={score} onScore={setScore}></MemmoryCards>
+      <MemmoryCards cardsObject={imageUrls} score={score} onScore={updateScore}></MemmoryCards>
 
     </>
   )
