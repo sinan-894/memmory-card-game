@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <ScoreBoard score={score} bestScore={bestScore}></ScoreBoard>
-      <MemmoryCards cardsObject={imageUrls}></MemmoryCards>
+      <MemmoryCards cardsObject={imageUrls} score={score} onScore={setScore}></MemmoryCards>
 
     </>
   )

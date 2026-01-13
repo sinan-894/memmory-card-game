@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { reorderRandomly } from './game-logic'
 
 
 export function ScoreBoard({score,bestScore}){
@@ -15,41 +16,36 @@ export function ScoreBoard({score,bestScore}){
 
 
 
-export function MemmoryCards({cardsObject}){
+export function MemmoryCards({cardsObject,score, onScore}){
     const cards = Object.keys(cardsObject)
     const [orderOfCards,setOrderOfCards] = useState([...cards])
+    const [memmory,setMemmory] = useState([])
     const handleClick = (e)=>{
-        console.log(e)
         const newArray = reorderRandomly(cards)
+        console.log(memmory)
+        if(isGameOver(e.target.id)){
+            onScore(0)
+            setMemmory([])
+        }
+        else{
+            onScore(score+1)
+            setMemmory([...memmory,e.target.id])
+        }
         setOrderOfCards([...newArray])
+        
+    }
+
+    const isGameOver  = (card)=>{
+        return memmory.includes(card)
     }
     return(
         <>
         <div className='cards-main'>
             {orderOfCards.map(card=>{
-                return <img src={cardsObject[card]} alt="" onClick={handleClick} />
+                return <img src={cardsObject[card]} key={card} id={card} alt="" onClick={handleClick} />
             })}
         </div>
         </>
     )
 }
 
-function reorderRandomly(array){
-    const length  = array.length
-    const newArray = new Array(length).fill(0);
-    array.forEach(item=>{
-        let newIndex = getRandomNumber(length)
-        while (newArray[newIndex]!=0){
-            newIndex = getRandomNumber(length)
-        }
-        newArray[newIndex] = item
-    })
-
-    return newArray
-
-}
-
-
-const getRandomNumber = (limit)=>{
-    return Math.floor(Math.random()*limit)
-}
