@@ -19,17 +19,7 @@ function App() {
     
   }
 
-  const imageUrls ={ 
-    'brook':'src/images/brook.jpeg',
-    'chopper':'src/images/chopper.jpeg',
-    'franky':"src/images/Franky.jpeg",
-    "luffy":"src/images/luffy-250.jpg",
-    "nami":'src/images/nami.jpeg',
-    "robin":"src/images/robin.jpeg",
-    "sanji":"src/images/sanji.jpeg",
-    "ussop":"src/images/ussop.jpeg"
-  }
-
+  const imageUrls = {}
   return (
     <>
       <ScoreBoard score={score} bestScore={bestScore}></ScoreBoard>
