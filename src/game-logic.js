@@ -22,3 +22,8 @@ const getRandomNumber = (limit)=>{
 export function displayGameWon(){
     console.log("YOU Won")
 }
+
+
+export function displayGameLost(){
+    console.log('You Lose')
+}
