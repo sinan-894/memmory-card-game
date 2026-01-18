@@ -1,17 +1,20 @@
+import { getRandomNumber } from "./game-logic"
 
 
-export async function getImageUrls(numberOfImages){
-    const listImageUrls = []
+export async function getImageUrlsObject(numberOfImages){
+    const imageUrlObject = {}
     for(let i=0;i<numberOfImages;i++){
-        let imageUrl  = await getImageUrl()
-        listImageUrls.push(imageUrl)
+        let {id,imageUrl}  = await getImageUrl()
+        imageUrlObject[id] = imageUrl 
     }
 
-    return listImageUrls
+    return imageUrlObject
 }
 
 async function getImageUrl(){
-    const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=S10RpEK19UYqeHM1pzvPuHWePzHOxvcb&s=cats');
-    const catData = await response.json();
-    return catData.data.images.original.url;
+    const pokemonID = getRandomNumber(1025,1)
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonID}`);
+    const pokemonData = await response.json();
+    return {id:pokemonID,imageUrl:pokemonData.sprites.other['official-artwork']['front_default']}
+    
 }

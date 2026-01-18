@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { reorderRandomly,displayGameWon, displayGameLost } from './game-logic'
 
 
@@ -18,11 +18,17 @@ export function ScoreBoard({score,bestScore}){
 
 export function MemmoryCards({cardsObject, setScore}){
     const cards = Object.keys(cardsObject)
-    const [orderOfCards,setOrderOfCards] = useState([...cards])
+    const [orderOfCards,setOrderOfCards] = useState([...Object.keys(cardsObject)])
     const [memmory,setMemmory] = useState([])
+
+    useEffect(()=>{
+        setOrderOfCards([...Object.keys(cardsObject)])
+    },[cardsObject])
+
+
+
     const handleClick = (e)=>{
-        const newArray = reorderRandomly(cards)
-        console.log(memmory)
+        const newArray = reorderRandomly(cards) 
         if(isGameOver(e.target.id)){
             setScore(0)
             setMemmory([])
@@ -37,14 +43,13 @@ export function MemmoryCards({cardsObject, setScore}){
     }
 
     const isGameOver  = (card)=>{
-        console.log(memmory.length)
         if (memmory.length<cards.length-1) return memmory.includes(card)
         else if(!memmory.includes(card)) displayGameWon()
         return 1;
     }
     return(
         <>
-        <div className='cards-main'>
+        <div className='cards-main'>  
             {orderOfCards.map(card=>{
                 return <img src={cardsObject[card]} key={card} id={card} alt="" onClick={handleClick} />
             })}

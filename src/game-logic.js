@@ -14,8 +14,8 @@ export function reorderRandomly(array){
 }
 
 
-const getRandomNumber = (limit)=>{
-    return Math.floor(Math.random()*limit)
+export const getRandomNumber = (limit,start=0)=>{
+    return Math.floor(Math.random()*limit)+start
 }
 
 
