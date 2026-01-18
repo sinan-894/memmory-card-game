@@ -29,7 +29,11 @@ export function MemmoryCards({cardsObject, setScore}){
 
     const handleClick = (e)=>{
         const newArray = reorderRandomly(cards) 
-        if(isGameOver(e.target.id)){
+        if(isGameWon(e.target.id)){
+            setScore(1)
+            displayGameWon()
+        }
+        else if(isGameLost(e.target.id)){
             setScore(0)
             setMemmory([])
             displayGameLost()
@@ -39,13 +43,15 @@ export function MemmoryCards({cardsObject, setScore}){
             setMemmory([...memmory,e.target.id])
         }
         setOrderOfCards([...newArray])
-        
+
     }
 
-    const isGameOver  = (card)=>{
-        if (memmory.length<cards.length-1) return memmory.includes(card)
-        else if(!memmory.includes(card)) displayGameWon()
-        return 1;
+
+    const isGameLost = (card) =>{
+        return memmory.includes(card)
+    }
+    const isGameWon = (card)=>{
+        return (memmory.length==cards.length-1) && !memmory.includes(card)
     }
     return(
         <>
