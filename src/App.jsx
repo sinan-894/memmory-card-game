@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react'
-import { ScoreBoard,MemmoryCards } from './components'
+import { ScoreBoard,MemmoryCards,WinLoseMessage } from './components'
 import './App.css'
 import { getImageUrlsObject } from './api'
 import { getRandomNumber } from './game-logic'
@@ -35,6 +35,7 @@ function App() {
       <>  
         <ScoreBoard score={score} bestScore={bestScore}></ScoreBoard>
         <MemmoryCards cardsObject={imageUrlsObject} score={score} setScore={updateScore}></MemmoryCards>
+        <WinLoseMessage></WinLoseMessage>
       </>
   )
 }

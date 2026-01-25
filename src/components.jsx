@@ -64,3 +64,20 @@ export function MemmoryCards({cardsObject, setScore}){
     )
 }
 
+
+
+export function WinLoseMessage(){
+
+    return(
+        <>
+        <dialog id='win' >
+            <p>YOU WON!!!</p>
+            <button>restart</button>
+        </dialog>
+        <dialog id='lose'>
+            <p>YOU lose!!!</p>
+            <button>restart</button>
+        </dialog>
+        </>
+    );
+}
