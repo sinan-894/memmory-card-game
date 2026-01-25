@@ -2,12 +2,12 @@ import { useState,useEffect } from 'react'
 import { ScoreBoard,MemmoryCards,WinLoseMessage } from './components'
 import './App.css'
 import { getImageUrlsObject } from './api'
-import { getRandomNumber } from './game-logic'
+import { closeMessageBox} from './game-logic'
 
 function App() {
   const [score,setScore] = useState(0)
   const [bestScore,setBestScore] = useState(0)
-  const cid = getRandomNumber(10);
+  const [gameID,setGameID] = useState(0);
   
   const updateScore = (isScore)=>{
     if(isScore){
@@ -21,21 +21,28 @@ function App() {
     
   }
 
+  const restartGame = ()=>{
+    setScore(0)
+    closeMessageBox()
+    setGameID(gameID+1)
+    setImageUrlsObject({})
+  }
+
   const [imageUrlsObject,setImageUrlsObject] = useState({})
 
   useEffect(()=>{
-    getImageUrlsObject(8  ).then(result=>{
+    getImageUrlsObject(8).then(result=>{
       setImageUrlsObject(result)
     })
-  },[])
+  },[gameID])
   return (
     
       (Object.keys(imageUrlsObject).length===0)?
-      <div>waiting {cid}</div>:
+      <div>waiting</div>:
       <>  
         <ScoreBoard score={score} bestScore={bestScore}></ScoreBoard>
         <MemmoryCards cardsObject={imageUrlsObject} score={score} setScore={updateScore}></MemmoryCards>
-        <WinLoseMessage></WinLoseMessage>
+        <WinLoseMessage onRestart = {restartGame}></WinLoseMessage>
       </>
   )
 }

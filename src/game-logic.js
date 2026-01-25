@@ -22,12 +22,15 @@ export const getRandomNumber = (limit,start=0)=>{
 export function displayGameWon(){
     const modal = document.querySelector('#win');
     modal.showModal()
-    console.log("YOU Won")
 }
 
 
 export function displayGameLost(){
     const modal = document.querySelector('#lose')
     modal.showModal()
-    console.log('You Lose',modal)
+}
+
+export function closeMessageBox(){
+    const modal  = document.querySelector('dialog[open]')
+    modal.close()
 }
