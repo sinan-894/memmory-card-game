@@ -20,10 +20,14 @@ export const getRandomNumber = (limit,start=0)=>{
 
 
 export function displayGameWon(){
+    const modal = document.querySelector('#win');
+    modal.showModal()
     console.log("YOU Won")
 }
 
 
 export function displayGameLost(){
-    console.log('You Lose')
+    const modal = document.querySelector('#lose')
+    modal.showModal()
+    console.log('You Lose',modal)
 }
