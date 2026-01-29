@@ -29,3 +29,38 @@
   padding: 20px 0px;
   margin-bottom: 20px;
 }
+
+/* dialog */
+
+dialog[open]{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width:30%;
+  height:200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  gap: 20px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  border: 3px solid green;
+  
+}
+
+dialog[open]#lose{
+  border: 3px solid red;
+}  
+
+
+dialog>button{
+  width: 30%;
+  padding: 10px 0px;
+  border-radius: 10px;
+  font-size: 0.7em;
+  background-color: #B3A125;
+  border: 0px;
+}
