@@ -1,15 +1,31 @@
 .cards-main{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  gap: 30px;
+  width: 70%;
+  padding: 0 15%;
 }
 
 .cards-main > img{
-  width: 250px;
-  height: 250px;
+  width: 100%;
+  border: 5px solid #3B4CCA;
+  border-radius: 20%;
+  transition: transform 0.5s ease-out;
 }
 
-/* dialog {
-  position: fixed;
-  top: 50%;
-  transform: translate(-50%, -50%);
-} */
+.cards-main > img:hover{
+  transform: scale(1.1);
+}
+
+/* score-board */
+
+.score-board-main{
+  display: flex;
+  font-size: 3em;
+  justify-content: center;
+  gap: 60px;
+  background-color: #FF0000;
+  padding: 20px 0px;
+  margin-bottom: 20px;
+}
