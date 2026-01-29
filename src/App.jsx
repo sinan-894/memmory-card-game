@@ -36,18 +36,14 @@ function App() {
       setImageUrlsObject(result)
     })
   },[gameID])
-  // return (  
-  //     (Object.keys(imageUrlsObject).length===0)?
-  //     <div>waiting</div>:
-  //     <>  
-  //       <ScoreBoard score={score} bestScore={bestScore}></ScoreBoard>
-  //       <MemmoryCards cardsObject={imageUrlsObject} score={score} setScore={updateScore}></MemmoryCards>
-  //       <WinLoseMessage onRestart = {restartGame}></WinLoseMessage>
-  //     </>
-  // )
-
-  return(
-    <LoadingScreen></LoadingScreen>
+  return (  
+      (Object.keys(imageUrlsObject).length===0)?
+      <LoadingScreen></LoadingScreen>:
+      <>  
+        <ScoreBoard score={score} bestScore={bestScore}></ScoreBoard>
+        <MemmoryCards cardsObject={imageUrlsObject} score={score} setScore={updateScore}></MemmoryCards>
+        <WinLoseMessage onRestart = {restartGame}></WinLoseMessage>
+      </>
   )
 }
 
