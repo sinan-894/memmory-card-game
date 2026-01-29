@@ -1,8 +1,9 @@
 import { useState,useEffect } from 'react'
-import { ScoreBoard,MemmoryCards,WinLoseMessage } from './components'
+import { ScoreBoard,MemmoryCards,WinLoseMessage,LoadingScreen } from './components'
 import './App.css'
 import { getImageUrlsObject } from './api'
 import { closeMessageBox} from './game-logic'
+import './loading.css'
 
 function App() {
   const [score,setScore] = useState(0)
@@ -18,7 +19,7 @@ function App() {
     else{
       setScore(0)
     }
-    
+
   }
 
   const restartGame = ()=>{
@@ -35,15 +36,18 @@ function App() {
       setImageUrlsObject(result)
     })
   },[gameID])
-  return (
-    
-      (Object.keys(imageUrlsObject).length===0)?
-      <div>waiting</div>:
-      <>  
-        <ScoreBoard score={score} bestScore={bestScore}></ScoreBoard>
-        <MemmoryCards cardsObject={imageUrlsObject} score={score} setScore={updateScore}></MemmoryCards>
-        <WinLoseMessage onRestart = {restartGame}></WinLoseMessage>
-      </>
+  // return (  
+  //     (Object.keys(imageUrlsObject).length===0)?
+  //     <div>waiting</div>:
+  //     <>  
+  //       <ScoreBoard score={score} bestScore={bestScore}></ScoreBoard>
+  //       <MemmoryCards cardsObject={imageUrlsObject} score={score} setScore={updateScore}></MemmoryCards>
+  //       <WinLoseMessage onRestart = {restartGame}></WinLoseMessage>
+  //     </>
+  // )
+
+  return(
+    <LoadingScreen></LoadingScreen>
   )
 }
 

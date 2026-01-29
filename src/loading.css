@@ -1,0 +1,31 @@
+
+.main-loading{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.circle{
+	border: 5px black solid;
+	border-top: 5px blue solid ;
+	height: 80px;
+	width: 80px;
+	border-radius: 50% ;
+	animation: 2s rotate linear infinite;
+}
+
+@keyframes rotate{
+	from{
+		transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}

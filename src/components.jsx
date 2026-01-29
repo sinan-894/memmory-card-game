@@ -81,3 +81,19 @@ export function WinLoseMessage({onRestart}){
         </>
     );
 }
+
+
+
+export function LoadingScreen(){
+    return(
+        <>
+        <div className='main-loading'>
+             <div className='circle'>
+
+            </div>
+            <div>Loading ....</div>
+        </div>
+       
+        </>
+    )
+}
