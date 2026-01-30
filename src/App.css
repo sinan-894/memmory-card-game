@@ -3,8 +3,9 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
   gap: 30px;
-  width: 70%;
-  padding: 0 15%;
+  max-width: 950px ;
+  padding: 0 10px;
+  margin: 0 auto;
 }
 
 .cards-main > img{
@@ -63,4 +64,49 @@ dialog>button{
   font-size: 0.7em;
   background-color: #B3A125;
   border: 0px;
+}
+
+
+
+@media (max-width:1000px) and (min-width:600px) {
+  .cards-main{
+    grid-template-columns: 1fr 1fr;
+    max-width: 600px ;
+  }
+}
+
+
+@media (max-width:600px){
+  .cards-main{
+    grid-template-columns: 1fr;
+    max-width: 300px ;
+  }
+
+  .score-board-main{
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2em;
+    gap:20px
+  }
+}
+
+
+@media (max-width:1000px){
+  .cards-main{
+    margin-top: 120px;
+  }
+  .score-board-main{
+    position:fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  .cards-main > img{
+    transition: none;
+  }
+
+  .cards-main > img:hover{
+    transform: scale(1);
+  }
 }
